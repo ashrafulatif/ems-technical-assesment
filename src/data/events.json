@@ -1,0 +1,56 @@
+[
+  {
+    "id": "1",
+    "title": "Next.js Conference",
+    "description": "A conference about the latest advances in Next.js.",
+    "date": "2025-09-10",
+    "location": "San Francisco, CA",
+    "category": "Conference",
+    "createdBy": "seed"
+  },
+  {
+    "id": "2",
+    "title": "React Workshop",
+    "description": "Hands-on workshop for advanced React patterns.",
+    "date": "2025-09-15",
+    "location": "New York, NY",
+    "category": "Workshop",
+    "createdBy": "seed"
+  },
+  {
+    "id": "3",
+    "title": "Local Tech Meetup",
+    "description": "A friendly meetup for local developers.",
+    "date": "2025-09-20",
+    "location": "Dhaka",
+    "category": "Meetup",
+    "createdBy": "seed"
+  },
+  {
+    "id": "4",
+    "title": "JavaScript Fundamentals",
+    "description": "Learn the core concepts of JavaScript programming.",
+    "date": "2025-09-25",
+    "location": "Boston, MA",
+    "category": "Workshop",
+    "createdBy": "seed"
+  },
+  {
+    "id": "5",
+    "title": "DevOps Summit",
+    "description": "Explore modern DevOps practices and tools.",
+    "date": "2025-10-01",
+    "location": "Austin, TX",
+    "category": "Conference",
+    "createdBy": "seed"
+  },
+  {
+    "id": "6",
+    "title": "UI/UX Design Meetup",
+    "description": "Discuss latest trends in user interface design.",
+    "date": "2025-10-05",
+    "location": "Seattle, WA",
+    "category": "Meetup",
+    "createdBy": "seed"
+  }
+]
