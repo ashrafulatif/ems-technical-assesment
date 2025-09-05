@@ -1,14 +1,22 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import CustomButton from "../button/customButton";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "All Events", href: "/" },
-    { name: "My Events", href: "/" },
+    { name: "All Events", href: "/all-events" },
+    { name: "My Events", href: "/my-events" },
   ];
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/create-event");
+  };
+
   return (
     <div>
       <nav className="max-w-6xl px-4 py-4 mx-auto flex justify-between items-center z-10 relative">
@@ -26,7 +34,7 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-          <CustomButton label="Create Event" />
+          <CustomButton label="Create Event" onClick={handleClick} />
         </div>
       </nav>
     </div>
