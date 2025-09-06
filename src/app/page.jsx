@@ -7,3 +7,9 @@ export default function Home() {
     </div>
   );
 }
+
+export const metadata = {
+  title: "EMS || Home",
+  description:
+    "Welcome to the Event Management System. A comprehensive platform for managing events seamlessly.",
+};

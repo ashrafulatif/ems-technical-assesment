@@ -6,3 +6,8 @@ const CreateEvent = () => {
 };
 
 export default CreateEvent;
+
+export const metadata = {
+  title: "EMS - Create Event",
+  description: "Create a new event in the Event Management System.",
+};

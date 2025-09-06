@@ -1,7 +1,13 @@
 import React from "react";
 import { Calendar, MapPin, Users, ArrowRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const EventCard = ({ event }) => {
+  const router = useRouter();
+
+  const handleDetailView = () => {
+    router.push(`/events/${event.id}`);
+  };
   return (
     <div className="bg-teal-600/5 rounded-lg border border-dashed border-teal-600 hover:bg-teal-600/10 transition-colors duration-200 p-6 w-full h-full max-w-sm">
       {/* Event Badge */}
@@ -51,7 +57,10 @@ const EventCard = ({ event }) => {
       {/* Footer */}
       <div className="flex items-center justify-between pt-4 border-t border-teal-600">
         {/* Action Button */}
-        <button className="inline-flex items-center text-sm font-medium text-teal-600 hover:text-teal-700 transition-colors duration-200 group">
+        <button
+          className="inline-flex items-center text-sm font-medium text-teal-600 hover:text-teal-700 transition-colors duration-200 group cursor-pointer"
+          onClick={handleDetailView}
+        >
           <span className="mr-1">View Details</span>
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
         </button>

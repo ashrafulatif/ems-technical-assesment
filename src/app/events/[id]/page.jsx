@@ -7,3 +7,8 @@ const EventDetailsPage = async ({ params }) => {
 };
 
 export default EventDetailsPage;
+
+export const metadata = {
+  title: "EMS - Event Details",
+  description: "View event details in the Event Management System.",
+};

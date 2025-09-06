@@ -52,7 +52,7 @@ const EventDetails = ({ params }) => {
   const getCategoryColor = (category) => {
     switch (category) {
       case "Conference":
-        return "bg-blue-100 text-blue-800 border-blue-200";
+        return "bg-sky-100 text-sky-800 border-sky-200";
       case "Workshop":
         return "bg-green-100 text-green-800 border-green-200";
       case "Meetup":
@@ -101,9 +101,9 @@ const EventDetails = ({ params }) => {
       </button>
 
       {/* Event Details Card */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+      <div className="bg-slate-100/90 rounded-lg shadow-sm border border-teal-700/40 overflow-hidden">
         {/* Header */}
-        <div className="bg-gradient-to-r from-teal-50 to-teal-100 px-6 py-8 border-b border-gray-200">
+        <div className="bg-gradient-to-r from-teal-600/5 to-teal-600/30 px-6 py-8 border-b border-gray-200">
           <div className="flex justify-between items-start">
             <div className="flex-1">
               <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
@@ -124,7 +124,7 @@ const EventDetails = ({ params }) => {
               </div>
             </div>
 
-            {/* Action Buttons - Only show for local events */}
+            {/* Action Buttons only show lcal */}
             {canEdit && (
               <div className="flex space-x-2 ml-4">
                 <button
@@ -150,30 +150,30 @@ const EventDetails = ({ params }) => {
         <div className="p-6">
           {/* Event Meta Information */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div className="flex items-center p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <Calendar className="h-8 w-8 text-blue-600 mr-3" />
+            <div className="flex items-center p-4 bg-blue-600/10 border border-sky-600/50 rounded-lg">
+              <Calendar className="h-8 w-8 text-sky-600 mr-3" />
               <div>
-                <p className="text-sm font-medium text-blue-600">Event Date</p>
-                <p className="text-lg font-semibold text-blue-900">
+                <p className="text-sm font-medium text-sky-600">Event Date</p>
+                <p className="text-lg font-semibold text-sky-900">
                   {formatDate(event.date)}
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center p-4 bg-green-50 rounded-lg border border-green-200">
-              <MapPin className="h-8 w-8 text-green-600 mr-3" />
+            <div className="flex items-center p-4 bg-teal-600/10 border border-teal-600/50 rounded-lg">
+              <MapPin className="h-8 w-8 text-teal-600 mr-3" />
               <div>
-                <p className="text-sm font-medium text-green-600">Location</p>
-                <p className="text-lg font-semibold text-green-900">
+                <p className="text-sm font-medium text-teal-600">Location</p>
+                <p className="text-lg font-semibold text-teal-900">
                   {event.location}
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center p-4 bg-purple-50 rounded-lg border border-purple-200">
-              <Tag className="h-8 w-8 text-purple-600 mr-3" />
+            <div className="flex items-center p-4 bg-violet-600/10 border border-violet-600/50 rounded-lg">
+              <Tag className="h-8 w-8 text-violet-600 mr-3" />
               <div>
-                <p className="text-sm font-medium text-purple-600">Category</p>
+                <p className="text-sm font-medium text-violet-600">Category</p>
                 <span
                   className={`inline-flex px-3 py-1 text-sm font-medium rounded-full border ${getCategoryColor(
                     event.category

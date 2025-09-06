@@ -12,12 +12,12 @@ const AppWrapper = ({ children }) => {
       </div>
 
       {/* Navbar */}
-      <div className="relative z-10">
+      <div className="relative z-20">
         <Navbar />
       </div>
 
       {/* Page content */}
-      <div className="relative z-10">{children}</div>
+      <div className="relative z-10 mt-16">{children}</div>
       <div className="relative z-10">
         <Footer />
       </div>

@@ -52,5 +52,42 @@
     "location": "Seattle, WA",
     "category": "Meetup",
     "createdBy": "seed"
+  },
+
+  {
+    "id": "7",
+    "title": "Python Data Science Workshop",
+    "description": "Learn data analysis and visualization with Python.",
+    "date": "2025-10-10",
+    "location": "Chicago, IL",
+    "category": "Workshop",
+    "createdBy": "seed"
+  },
+  {
+    "id": "8",
+    "title": "Cloud Computing Conference",
+    "description": "Discover the latest in cloud technologies and architecture.",
+    "date": "2025-10-15",
+    "location": "Denver, CO",
+    "category": "Conference",
+    "createdBy": "seed"
+  },
+  {
+    "id": "9",
+    "title": "Mobile Development Meetup",
+    "description": "Share experiences in iOS and Android development.",
+    "date": "2025-10-20",
+    "location": "Los Angeles, CA",
+    "category": "Meetup",
+    "createdBy": "seed"
+  },
+  {
+    "id": "10",
+    "title": "Cybersecurity Fundamentals",
+    "description": "Essential security practices for modern applications.",
+    "date": "2025-10-25",
+    "location": "Washington, DC",
+    "category": "Workshop",
+    "createdBy": "seed"
   }
 ]

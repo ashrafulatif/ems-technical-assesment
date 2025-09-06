@@ -7,3 +7,8 @@ const EditEventPage = async ({ params }) => {
 };
 
 export default EditEventPage;
+
+export const metadata = {
+  title: "EMS - Edit Event",
+  description: "Edit an existing event in the Event Management System.",
+};

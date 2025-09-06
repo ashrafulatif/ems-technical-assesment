@@ -6,3 +6,8 @@ const MyEventsPage = () => {
 };
 
 export default MyEventsPage;
+
+export const metadata = {
+  title: "EMS - My Events",
+  description: "Manage your events in the Event Management System.",
+};
