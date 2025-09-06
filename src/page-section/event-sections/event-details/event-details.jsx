@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useEvents } from "@/context/EventsContext";
 import {
@@ -11,23 +11,36 @@ import {
   Trash2,
   Edit,
 } from "lucide-react";
+import toast from "react-hot-toast";
+import Dialog from "@/components/dialoge-box/Dialog";
 
 const EventDetails = ({ params }) => {
   const { getEventById, deleteEvent, isEventEditable, loading } = useEvents();
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
   const router = useRouter();
 
   const event = getEventById(params.id);
   const canEdit = isEventEditable(params.id);
 
   const handleDelete = async () => {
-    if (window.confirm("Are you sure you want to delete this event?")) {
+    setIsDeleting(true);
+
+    try {
       const result = await deleteEvent(params.id);
       if (result.success) {
+        toast.success("Event deleted successfully!");
         router.push("/my-events");
       } else {
-        alert("Error deleting event: " + result.error);
+        toast.error(`Error deleting event: ${result.error}`);
+        setIsDeleting(false);
       }
+    } catch (error) {
+      toast.error("Error deleting event");
+      setIsDeleting(false);
     }
+
+    setShowDeleteDialog(false);
   };
 
   const formatDate = (dateString) => {
@@ -62,11 +75,13 @@ const EventDetails = ({ params }) => {
     }
   };
 
-  if (loading) {
+  if (loading || isDeleting) {
     return (
       <div className="p-4 md:p-6 lg:p-8 max-w-6xl mx-auto">
         <div className="flex items-center justify-center min-h-[400px]">
-          <div className="text-gray-600">Loading event details...</div>
+          <div className="text-gray-600">
+            {isDeleting ? "Deleting event..." : "Loading event details..."}
+          </div>
         </div>
       </div>
     );
@@ -91,6 +106,21 @@ const EventDetails = ({ params }) => {
 
   return (
     <div className="p-4 md:p-6 lg:p-8 max-w-6xl mx-auto">
+      {/* Delete Confirmation Dialog */}
+      <Dialog
+        isOpen={showDeleteDialog}
+        onClose={() => setShowDeleteDialog(false)}
+        onConfirm={handleDelete}
+        title="Delete Event"
+        confirmText="Delete"
+        cancelText="Cancel"
+      >
+        <p>
+          Are you sure you want to delete this event? This action cannot be
+          undone.
+        </p>
+      </Dialog>
+
       {/* Back Button */}
       <button
         onClick={() => router.back()}
@@ -135,7 +165,7 @@ const EventDetails = ({ params }) => {
                   Edit
                 </button>
                 <button
-                  onClick={handleDelete}
+                  onClick={() => setShowDeleteDialog(true)}
                   className="flex items-center px-3 py-2 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors duration-200"
                 >
                   <Trash2 className="h-4 w-4 mr-1" />

@@ -1,3 +1,4 @@
+import { Eye, Trash2 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -5,7 +6,6 @@ const EventTable = ({
   columns,
   data,
   onRowAction,
-  actionLabel,
   emptyMessage = "No data available",
 }) => {
   return (
@@ -52,15 +52,16 @@ const EventTable = ({
                       <div className="flex space-x-2">
                         <Link
                           href={`/events/${row.id}`}
-                          className="text-teal-600 hover:text-teal-800 font-medium transition-colors duration-150"
+                          className="text-teal-600 hover:text-teal-800 font-medium transition-colors duration-150 flex items-center space-x-1"
                         >
-                          Details
+                          <Eye className="h-4 w-4" />
+                          <span>Details</span>
                         </Link>
                         <button
                           onClick={() => onRowAction(row)}
-                          className="text-red-600 hover:text-red-800 font-medium transition-colors duration-150"
+                          className="text-white hover:bg-red-700 font-medium transition-colors duration-150 bg-red-600 p-2 rounded-full"
                         >
-                          {actionLabel || "Action"}
+                          <Trash2 className="h-4 w-4" />
                         </button>
                       </div>
                     </td>

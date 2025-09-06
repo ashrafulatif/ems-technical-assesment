@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import AppWrapper from "../components/layout/AppWrapper";
 import { EventsProvider } from "@/context/EventsContext";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
         <EventsProvider>
           <AppWrapper>{children}</AppWrapper>
         </EventsProvider>
+        <Toaster />
       </body>
     </html>
   );

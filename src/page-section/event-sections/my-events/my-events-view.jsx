@@ -1,19 +1,32 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useEvents } from "@/context/EventsContext";
 import { Calendar, MapPin, Tag, Trash2 } from "lucide-react";
 import EventTable from "@/components/events-table/events-table";
+import Dialog from "@/components/dialoge-box/Dialog";
+import toast from "react-hot-toast";
 
 const MyEventsView = () => {
   const { myEvents, loading, deleteEvent, statistics } = useEvents();
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [eventToDelete, setEventToDelete] = useState(null);
 
-  const handleDeleteEvent = async (eventToDelete) => {
-    if (window.confirm("Are you sure you want to delete this event?")) {
+  const handleDeleteEvent = async (event) => {
+    setEventToDelete(event);
+    setShowDeleteDialog(true);
+  };
+
+  const confirmDelete = async () => {
+    if (eventToDelete) {
       const result = await deleteEvent(eventToDelete.id);
-      if (!result.success) {
-        alert("Error deleting event: " + result.error);
+      if (result.success) {
+        toast.success("Event deleted successfully!");
+      } else {
+        toast.error(`Error deleting event: ${result.error}`);
       }
     }
+    setShowDeleteDialog(false);
+    setEventToDelete(null);
   };
 
   const formatDate = (dateString) => {
@@ -95,6 +108,24 @@ const MyEventsView = () => {
 
   return (
     <div className="p-4 md:p-6 lg:p-8 max-w-6xl mx-auto min-h-screen">
+      {/* Delete Confirmation Dialog */}
+      <Dialog
+        isOpen={showDeleteDialog}
+        onClose={() => {
+          setShowDeleteDialog(false);
+          setEventToDelete(null);
+        }}
+        onConfirm={confirmDelete}
+        title="Delete Event"
+        confirmText="Delete"
+        cancelText="Cancel"
+      >
+        <p>
+          Are you sure you want to delete "{eventToDelete?.title}"? This action
+          cannot be undone.
+        </p>
+      </Dialog>
+
       <div className="mb-6 md:mb-8">
         <h1 className="text-neutral-800 text-xl md:text-2xl lg:text-3xl font-semibold mb-2">
           My Events

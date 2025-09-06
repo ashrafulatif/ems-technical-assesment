@@ -26,6 +26,7 @@ This is a mini Event Management System built with Next.js that lets users view u
 - **Axios**
 - **React Hook Form**
 - **Zod**
+- **React-Hot-toast**
 - **Lucid-React**
 - **AOS**
 - **ESLint**
@@ -134,7 +135,7 @@ ems-technical-assesment/
         └── ...
 ```
 
-### Typical Usage of Folders
+### Usage of Folders
 
 - **app/**: Main entry and Next.js route structure.
 - **components/**: UI elements like event cards, search bar, forms.

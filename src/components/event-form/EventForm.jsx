@@ -187,10 +187,6 @@ const EventForm = ({
             <option value="Conference">Conference</option>
             <option value="Workshop">Workshop</option>
             <option value="Meetup">Meetup</option>
-            <option value="Webinar">Webinar</option>
-            <option value="Seminar">Seminar</option>
-            <option value="Networking">Networking</option>
-            <option value="Training">Training</option>
           </select>
         </div>
         {errors.category && (

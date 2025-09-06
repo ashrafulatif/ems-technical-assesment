@@ -19,7 +19,6 @@ export const useEvents = () => {
 };
 
 export const EventsProvider = ({ children }) => {
-  // State management
   const [apiEvents, setApiEvents] = useState([]);
   const [localEvents, setLocalEvents] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -41,7 +40,7 @@ export const EventsProvider = ({ children }) => {
     }
   }, []);
 
-  // Load local events from localStorage
+  // Load local events
   const loadLocalEvents = useCallback(() => {
     try {
       const storedEvents = localStorage.getItem("events");
@@ -53,17 +52,17 @@ export const EventsProvider = ({ children }) => {
     }
   }, []);
 
-  // Get all events (API + Local)
+  // Get (API + Local)
   const getAllEvents = useCallback(() => {
     return [...apiEvents, ...localEvents];
   }, [apiEvents, localEvents]);
 
-  // Get only local events (My Events)
+  // Get only local evnt
   const getMyEvents = useCallback(() => {
     return localEvents;
   }, [localEvents]);
 
-  // Create new event (saves to localStorage)
+  // Create evnt
   const createEvent = useCallback(
     (eventData) => {
       try {
@@ -72,7 +71,7 @@ export const EventsProvider = ({ children }) => {
           id: eventId,
           ...eventData,
           createdAt: new Date().toISOString(),
-          isLocal: true, // Flag to identify local events
+          isLocal: true, // Flag to identify lcl evnt
         };
 
         const updatedEvents = [...localEvents, newEvent];
@@ -88,7 +87,7 @@ export const EventsProvider = ({ children }) => {
     [localEvents]
   );
 
-  // Update event (only local events can be updated)
+  // Update event lcl strge
   const updateEvent = useCallback(
     (eventId, updatedData) => {
       try {
@@ -110,7 +109,7 @@ export const EventsProvider = ({ children }) => {
     [localEvents]
   );
 
-  // Delete event (only local events can be deleted)
+  // Delete event lcl
   const deleteEvent = useCallback(
     (eventId) => {
       try {
@@ -129,7 +128,7 @@ export const EventsProvider = ({ children }) => {
     [localEvents]
   );
 
-  // Get single event by ID (from both sources)
+  // Get  event by ID
   const getEventById = useCallback(
     (eventId) => {
       const allEvents = getAllEvents();
@@ -140,7 +139,7 @@ export const EventsProvider = ({ children }) => {
     [getAllEvents]
   );
 
-  // Check if event is editable (only local events)
+  // Check if event is editable
   const isEventEditable = useCallback(
     (eventId) => {
       return localEvents.some(
@@ -206,7 +205,7 @@ export const EventsProvider = ({ children }) => {
     initializeData();
   }, [loadLocalEvents, loadApiEvents]);
 
-  // Context value
+  // Context val
   const contextValue = {
     // State
     apiEvents,
